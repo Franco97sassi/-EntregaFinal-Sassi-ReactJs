@@ -1,0 +1,17 @@
+.container{
+    background-color: rgb(163, 165, 42);
+    display: flex;
+    justify-content: space-evenly;
+    color: darkblue;
+}
+
+h1{
+    text-align: center;
+    
+}
+p{
+    font-size: 1.25em;
+    font-weight: bold;
+    color: black;
+
+}
