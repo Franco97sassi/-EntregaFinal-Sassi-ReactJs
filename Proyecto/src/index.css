@@ -3,18 +3,19 @@
  }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
+  border-radius: 5px;
+  border: 2px solid black;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: rgb(163, 165, 42);
+  background-color: rgb(138, 139, 50);
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: rgb(0, 0, 0);
+  background-color: rgb(222, 224, 95);
 }
 button:focus,
 button:focus-visible {

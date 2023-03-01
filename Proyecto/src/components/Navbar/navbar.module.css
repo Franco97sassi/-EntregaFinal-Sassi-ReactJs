@@ -2,7 +2,7 @@
     background-color: rgb(163, 165, 42);
     display: flex;
     justify-content: space-evenly;
-    color: darkblue;
+    color: rgb(4, 4, 216);
 }
 
 h1{
@@ -14,4 +14,8 @@ p{
     font-weight: bold;
     color: black;
 
+}
+
+button{
+    border-radius: 10px solid black;
 }
