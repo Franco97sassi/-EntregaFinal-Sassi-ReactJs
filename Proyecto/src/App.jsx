@@ -9,9 +9,8 @@ const App=()=> {
    };
   return (
     <div>
-      <Navbar/>
-       <h1>Nueva tienda de Tecnologia</h1>
-       <ItemListContainer txtBtn="Click Me" handleClick={handleClick} />
+      <Navbar/>       
+       <ItemListContainer texto="Bienvenidos a esta nueva tienda de tecnologia"/>
     </div>
      
   )

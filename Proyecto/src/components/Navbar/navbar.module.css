@@ -5,10 +5,7 @@
     color: rgb(4, 4, 216);
 }
 
-h1{
-    text-align: center;
-    
-}
+ 
 p{
     font-size: 1.25em;
     font-weight: bold;
@@ -19,3 +16,7 @@ p{
 button{
     border-radius: 10px solid black;
 }
+h2{
+    font-style: italic;
+}
+ 
