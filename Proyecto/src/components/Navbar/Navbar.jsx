@@ -1,16 +1,32 @@
-import styles from "./navbar.module.css";
 import Cartwidget from "../CartWidget/Cartwidget";
-import {Button} from "@mui/material"
+import DrawerAppBar from "../DrawerAppBar/index";
+
+
+const categories = ["Celularaes", "Tablets", "Notebooks", "Placas de video", "Accesorios", <Cartwidget notifications="0" />]
 
 const Navbar = () => {
   return (
-    <nav className={styles.container}>
-      <h2 >Techsoft</h2>      
+    <nav  >
+      <h2 >Techsoft</h2>
+
+      {/* <NavLink to="/"   style={({ isActive }) => (isActive ? activeStyle : undefined)}> 
       <Button variant="contained"  color="success">Home</Button>
+       </Navlink>
+      
+      <Navlink to="about"   style={({ isActive }) => (isActive ? activeStyle : undefined)}> 
       <Button variant="contained" color="success">About</Button>
-      <Button variant="contained" color="success">Products</Button>
+      </Navlink>
+      <Navlink to="products"   style={({ isActive }) => (isActive ? activeStyle : undefined)}> 
+      <Button variant="contained" color="success">Products</Button>     
+      </Navlink>
+      <Navlink to="contact"   style={({ isActive }) => (isActive ? activeStyle : undefined)}> 
       <Button variant="contained" color="success">Contact</Button>
-      <Cartwidget/>
+      </Navlink>
+       */}
+
+      <DrawerAppBar />
+
+      {/* <Cartwidget/> */}
     </nav>
   );
 };

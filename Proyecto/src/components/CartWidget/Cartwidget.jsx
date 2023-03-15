@@ -2,11 +2,12 @@ import React from 'react'
 import { BsFillCartCheckFill } from "react-icons/bs"
 import styles from "./cartwidget.module.css";
 
-const Cartwidget = () => {
+const Cartwidget = (props) => {
   return (
-    <span className={styles.container2}>   <BsFillCartCheckFill /> 0</span>
-
-  )
+    <div className={styles.container2}>
+      <BsFillCartCheckFill /> <div className={styles.container}>{props.notifications}</div>
+      </div>
+      )
 }
 
-export default Cartwidget
+      export default Cartwidget
