@@ -1,26 +1,17 @@
-.greeting{
-     font-style: normal;
- }
-.greeting:hover{
-    background-color: chartreuse;
-}
+ 
 .container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    padding-left: 200px;
-    padding-right: 200px;
+     padding-top: 100px;   
     justify-content: center;
     align-items: center;
     gap: 50px;
-    background-color: #f3f3f3;
+    background-color: #42c5f8;
     font-size: 2rem;
     font-weight: 600;
     color: black;
-    min-width: 100vw;
     min-height: 100vh;
-    overflow: hidden;
-  }
+    overflow-x: hidden;
+   }
   

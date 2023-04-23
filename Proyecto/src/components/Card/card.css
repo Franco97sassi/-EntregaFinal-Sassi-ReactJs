@@ -1,0 +1,17 @@
+  .containerProduct {
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: space-around;
+    width: 545px;
+    height: 500px;
+  
+  } 
+  .containerProduct Button {
+    width: 100%;
+      
+     font-size: 20px;
+    font-weight: bold;
+     margin-top: 10px;
+  }
+  

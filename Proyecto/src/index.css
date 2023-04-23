@@ -4,18 +4,17 @@
 
 button {
   border-radius: 5px;
-  border: 2px solid black;
+  border: 2px solid #a642f8;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: rgb(138, 139, 50);
+  background-color: #a642f8 ;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: rgb(0, 0, 0);
-  background-color: rgb(222, 224, 95);
+  border-color: rgba(255, 255, 255, 0.555);
 }
 button:focus,
 button:focus-visible {

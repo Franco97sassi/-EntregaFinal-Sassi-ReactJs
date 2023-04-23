@@ -1,45 +1,50 @@
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
-import { useEffect, useState } from 'react';
-import axios from "axios"
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import db from '../db/firebase-config.js'
+import { collection, getDocs } from 'firebase/firestore'
+import Cart from './components/Cart/Cart';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
-// import Home from "./components/Home/Home";
+import { CartProvider } from './contexts/cartContextProvider';
 
 const App = () => {
-  // const handleClick = () => {
-  //   alert("Bienvenidos a la empresa");
-  // };
 
   const [productos, setProductos] = useState([]);
 
+  //Accedo a la coleccion
   const getProductos = async () => {
-    const res = await axios.get('https://fakestoreapi.com/products')
-    setProductos(res.data)
+    const itemsCollectionRef = collection(db, 'productos')
+    const itemsCollection = await getDocs(itemsCollectionRef)
+    setProductos(itemsCollection.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
   };
 
   useEffect(() => {
     getProductos();
   }, []);
 
+
   const categorias = productos.map((producto) => producto.category)
 
   return (
-    <div>
-      <Navbar categorias={categorias} />
-      <h1>Empresa de Tecnologia</h1>
-      <Routes>
-        <Route path='/' element={<ItemListContainer productos={productos} />} />
-        {/* <Route path='/home' element={<Home />} /> */}
-        <Route path='/category/:cat' element={<ItemListContainer productos={productos} />} />
-        <Route path='/item/:id' element={<ItemDetailContainer productos={productos} />} />
-        <Route path='*' element={<h2> "404"</h2>} />
-      </Routes>
-      {/* <ItemListContainer texto="Bienvenidos a esta nueva tienda de tecnologia"/> */}
-    </div>
+    //Consumo el contexto
+    <CartProvider children={
+
+      <div>
+        
+        <Navbar categorias={categorias} />
+
+        <Routes>
+          <Route path='/' element={<ItemListContainer productos={productos} />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/category/:categoryId' element={<ItemListContainer productos={productos} />} />
+          <Route path='/item/:id' element={<ItemDetailContainer productos={productos} />} />
+          <Route path='*' element={<h1> "404 Not Found"</h1>} />
+        </Routes>
+      </div>
+    } />
   )
 }
-
 export default App
 

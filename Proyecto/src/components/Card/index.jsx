@@ -1,38 +1,38 @@
-import * as React from 'react';
+ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea , Rating } from '@mui/material';
- 
-export default function ActionAreaCard({ producto, cardProps }) {
-  //const cardProps={maxWidth:345,height:200,showRating:true,showPrice:true,showDescription:true}
-   return (
-    <Card sx={{ maxWidth: cardProps.maxWidth, width: cardProps.maxWidth, borderRadius: "20px" }}>
+import { Button, CardActionArea } from '@mui/material';
+import "./card.css"
+import { Link } from 'react-router-dom';
+
+export default function ActionAreaCard({producto}) {
+  return (
+     
+    <div className='containerProduct'>  
+    <Card sx={{ maxWidth: 345   }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height={cardProps.height}
-          image={producto.image}
-          alt={producto.title}
-          sx={{ objectFit: "contain", width: cardProps.height, marginLeft: "auto", marginRight: "auto" }} />
+          height="300"
+          image= {producto.image} 
+          alt="imagen"      
+          sx={{ objectFit: "contain", width: 250,height: 250, marginLeft: "auto", marginRight: "auto", marginTop: "25px" }} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {producto.title}
+          {producto.title} 
           </Typography>
-          {cardProps.showDescription &&
-            <Typography variant="body2" color="text.secondary">
-              {producto.description}
-            </Typography>
-          }
-          {cardProps.showPrice &&
-            <Typography gutterBottom variant="h5" component="div">
-              {"$" + producto.price}
-            </Typography>
-          }
-          {cardProps.showRating && <Rating name="read-only" value={producto.rating.rate} readOnly />}
+          <Typography     variant="h6" color="text.secondary">
+        $ {producto.price} 
+          </Typography>
         </CardContent>
       </CardActionArea>
-    </Card>
+      <Link to={`/item/${producto.id}`}>
+       < Button variant="contained"    >   Ver Producto </Button>
+      </Link>
+    </Card> 
+     
+    </div>
   );
 }

@@ -1,13 +1,18 @@
-import React from 'react'
-import { BsFillCartCheckFill } from "react-icons/bs"
-import styles from "./cartwidget.module.css";
+import React, { useContext } from 'react'
+ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import styles from './cartwidget.module.css'
+import { CartContext } from '../../contexts/cartContextProvider';
+import { Link } from 'react-router-dom';
 
-const Cartwidget = (props) => {
+const CartWidget = (props) => {
+   
   return (
-    <div className={styles.container2}>
-      <BsFillCartCheckFill /> <div className={styles.container}>{props.notifications}</div>
-      </div>
-      )
+     // va a recibir las props desde la navbar
+    <div className={styles.displayflex}>
+         <ShoppingCartOutlinedIcon fontSize='medium' />
+         {props.notifications>0 && <div>{props.notifications}</div>}
+     </div>
+    
+  )
 }
-
-      export default Cartwidget
+export default CartWidget

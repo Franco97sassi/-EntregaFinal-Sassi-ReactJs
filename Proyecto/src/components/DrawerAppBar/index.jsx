@@ -10,50 +10,38 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-// import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
+ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import CartWidget from "../CartWidget/CartWidget";
-// import styles from "./drawerappbar.module.css";
-// import CartWidget from '../navbar/CartWidget';
-  import { createTheme, Tooltip } from '@mui/material';
-// import { ThemeProvider } from '@emotion/react';
-// import flykiteLogo from '../../assets/flykite-logo.svg';
-// import flykiteLogoBlack from '../../assets/flykite-logo-bl.svg';
-// import styles from './DrawerAppBar.module.css';
+  import {   Tooltip } from '@mui/material';
+  import styles from './DrawerAppBar.module.css';
  import { Link, NavLink } from 'react-router-dom';
-
+import { CartContext } from '../../contexts/cartContextProvider';
+import { useContext } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+ 
 const drawerWidth = 240;
-//const navItems = ['Home', 'About', 'Contact'];
-//const navItems = ["Velas", "Barras", "Tablas", "Accesorios", <CartWidget notifications="3" />];
-const navItems = ["electronics",  "jewelery", "men's clothing", "women's clothing", <CartWidget notifications="4" />];
-
-// const darkTheme = createTheme({
-//   palette: {
-//     primary: {
-//       light: '#757ce8',
-//       main: '#000000',
-//       dark: '#002884',
-//       contrastText: '#fff',
-//     },
-//     secondary: {
-//       light: '#ff7961',
-//       main: '#f44336',
-//       dark: '#ba000d',
-//       contrastText: '#000',
-//     },
-//   },
-// });
+const navItems = ["Celulares","Tablets","Notebooks","Consolas" ];
 
 let activeStyle = {
-  textDecoration: "underline",
+  textDecoration: "none",
 };
 
 function DrawerAppBar(props) {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
 
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] =  useState(false);
+
+  //funcionalidad para ver las cantidades de productos en el carrito
+const {cartItems,cartCount} = useContext(CartContext)
+ const [notifications, setNotifications] = useState(0)
+ useEffect (() => {
+  setNotifications(cartCount)
+
+}, [cartItems])
+ 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -61,14 +49,13 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
 
-      <Typography  variant="h6" sx={{ my: 2 }}>
+      <Typography  variant="h2" sx={{ my: 2 }}>
          
-        <h4>Mi Tienda</h4>
+        <h2>TechSoft</h2>
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
-            // <NavLink to="productos"  style={({ isActive }) => (isActive ? activeStyle : undefined)} >  
 
           <NavLink to={`/category/${item}`} key={item} style={{ textDecoration: "none", color: "inherit" }}>
             <ListItem key={item} disablePadding>
@@ -78,6 +65,13 @@ function DrawerAppBar(props) {
             </ListItem>
           </NavLink>
         ))}
+                  <NavLink to={"/cart"} key={"cart"} style={{ textDecoration: "none", color: "inherit" }}>
+                  <ListItem key={"cart"} disablePadding>
+                  <ListItemButton sx={{ textAlign: 'center' }}>
+                  <ListItemText primary={<CartWidget notifications={notifications} />} />
+                  </ListItemButton>
+            </ListItem>
+            </NavLink>
       </List>
     </Box>
   );
@@ -97,12 +91,11 @@ function DrawerAppBar(props) {
               onClick={handleDrawerToggle}
               sx={{ mr: 2, display: { sm: 'none' } }}
             >
-              {/* <MenuIcon /> */}
-            </IconButton>
+             </IconButton>
             <Tooltip title="Home" >
               <Link to={`/`} style={{ textDecoration: "none", color: "inherit" }}>
                 <Box sx={{ display: { xs: 'flex', sm: 'flex' }, margin: 'auto' }}>
-                  <h3>Mi Tienda</h3>
+                  <h2>TechSoft</h2>
                 </Box>
               </Link>
             </Tooltip>
@@ -120,8 +113,15 @@ function DrawerAppBar(props) {
                   </Button>
                 </NavLink>
               ))}
+              <NavLink to={`/cart`} key={"cart"}>
+                <Button key={"cart"} sx={{ color: '#54c68c' }}>
+                  <CartWidget notifications={notifications} />
+                </Button>  
+                </NavLink>
             </Box>
           </Toolbar>
+
+          
         </AppBar>
       <Box component="nav">
         <Drawer
@@ -140,9 +140,8 @@ function DrawerAppBar(props) {
           {drawer}
         </Drawer>
       </Box>
-      {/* <Box component="main" sx={{ p: 3 }}>
-        <Toolbar />
-      </Box> */}
+       
+
     </Box>
   );
 }
@@ -156,3 +155,5 @@ DrawerAppBar.propTypes = {
 };
 
 export default DrawerAppBar;
+
+

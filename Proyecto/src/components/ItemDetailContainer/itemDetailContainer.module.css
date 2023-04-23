@@ -6,12 +6,19 @@
     align-self: center;
     align-items: center;
     gap: 50px;
-    background-color: #f3f3f3;
+    background-color:  #42c5f8;
     font-size: 2rem;
     font-weight: 600;
-    color: black;
-    min-width: 100vw;
-    min-height: 100vh;
+    color: rgb(0, 0, 0);
+    
     padding-top: 100px;
+    padding-bottom: 10px;
     overflow: hidden;
-  }
+   
+   }
+
+   .error{
+    font-size: 75px;
+font-style: italic;
+text-align: center;
+   }
