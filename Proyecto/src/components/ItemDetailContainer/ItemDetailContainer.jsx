@@ -16,7 +16,7 @@ const ItemDetailContainer = ({ productos }) => {
   //funcionalidad para cuando no se encuentra el producto
   const [loadingMsg, setLoadingMsg] = useState(" Error 404: Producto no encontrado ");
 
-  const producto = productos.find(producto => producto.id == id)
+  let producto = productos.find(producto => producto.id == id)
 
   const getItem = async (id) => {
     const docRef = doc(db, "productos", id);
