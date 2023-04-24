@@ -51,7 +51,7 @@ const {cartItems,cartCount} = useContext(CartContext)
 
       <Typography  variant="h2" sx={{ my: 2 }}>
          
-        <h2>TechSoft</h2>
+       TechSoft
       </Typography>
       <Divider />
       <List>
