@@ -15,5 +15,6 @@ Gif en ./src/assets/gif
 -Elegi Realizar una tienda de venta de productos tecnologicos al ser el area en la cual me estoy capacitando actualmente.
 -Utilize como dependencia extra "npm react-text-transition" para utilizarla para actualizar los subtotales como mencione anteriormente
 
-###Gif para ver navegabilididad en:
+## Gif :
+### en carpeta:
 ./src/assets/gif
